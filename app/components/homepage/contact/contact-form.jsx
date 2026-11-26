@@ -1,7 +1,7 @@
 "use client";
 // @flow strict
 import { isValidEmail } from "@/utils/check-email";
-import axios from "axios";
+import { personalData } from "@/utils/data/personal-data";
 import { useState } from "react";
 import { TbMailForward } from "react-icons/tb";
 import { toast } from "react-toastify";
@@ -33,24 +33,17 @@ function ContactForm() {
       setError({ ...error, required: false });
     };
 
-    try {
-      setIsLoading(true);
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`,
-        userInput
-      );
-
-      toast.success("Pesan berhasil dikirim!");
-      setUserInput({
-        name: "",
-        email: "",
-        message: "",
-      });
-    } catch (error) {
-      toast.error(error?.response?.data?.message);
-    } finally {
-      setIsLoading(false);
-    };
+    const subject = encodeURIComponent(`Pesan Portofolio dari ${userInput.name}`);
+    const body = encodeURIComponent(
+      `Nama: ${userInput.name}\nEmail: ${userInput.email}\n\nPesan:\n${userInput.message}`
+    );
+    window.location.href = `mailto:${personalData.email}?subject=${subject}&body=${body}`;
+    toast.success("Membuka aplikasi email Anda untuk mengirim pesan!");
+    setUserInput({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
