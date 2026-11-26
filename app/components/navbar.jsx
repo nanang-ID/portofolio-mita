@@ -5,16 +5,26 @@ import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const navItems = [
-  { label: "TENTANG", href: "/#about" },
-  { label: "PENGALAMAN", href: "/#experience" },
-  { label: "KOMPETENSI", href: "/#skills" },
-  { label: "PENDIDIKAN", href: "/#education" },
-  { label: "KARYA", href: "/#projects" },
-  { label: "KONTAK", href: "/#contact" },
+  { label: "TENTANG", id: "about" },
+  { label: "PENGALAMAN", id: "experience" },
+  { label: "KOMPETENSI", id: "skills" },
+  { label: "PENDIDIKAN", id: "education" },
+  { label: "KARYA", id: "projects" },
+  { label: "KONTAK", id: "contact" },
 ];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState(null, "", `#${id}`);
+    }
+  };
 
   return (
     <nav className="bg-transparent relative z-[99]">
@@ -45,16 +55,16 @@ function Navbar() {
           id="navbar-default"
         >
           {navItems.map((item) => (
-            <li key={item.href} className="w-full md:w-auto">
-              <Link
-                className="block px-4 py-2 no-underline outline-none hover:no-underline"
-                href={item.href}
-                onClick={() => setIsOpen(false)}
+            <li key={item.id} className="w-full md:w-auto">
+              <a
+                className="block px-4 py-2 no-underline outline-none hover:no-underline cursor-pointer"
+                href={`#${item.id}`}
+                onClick={(e) => handleNavClick(e, item.id)}
               >
                 <div className="text-sm text-white transition-colors duration-300 hover:text-pink-500">
                   {item.label}
                 </div>
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
