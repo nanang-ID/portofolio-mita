@@ -62,13 +62,13 @@ function Education() {
           </div>
 
           {/* Timeline Pendidikan */}
-          <div className="lg:col-span-8 relative pl-6 border-l-2 border-[#2a2e5a] space-y-5">
+          <div className="lg:col-span-8 relative pl-5 sm:pl-6 border-l-2 border-[#2a2e5a] space-y-5">
             {educations.map((education) => {
               const isPrimary = education.id === 1;
               return (
                 <div key={education.id} className="relative">
                   <span
-                    className={`absolute -left-[33px] top-6 w-3.5 h-3.5 rounded-full ring-4 ring-[#0d1224] ${
+                    className={`absolute -left-[29px] sm:-left-[33px] top-6 w-3.5 h-3.5 rounded-full ring-4 ring-[#0d1224] ${
                       isPrimary ? "bg-pink-500" : "bg-violet-500"
                     }`}
                   />

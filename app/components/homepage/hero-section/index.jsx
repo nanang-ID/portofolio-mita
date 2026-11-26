@@ -22,8 +22,8 @@ function HeroSection() {
 
       <div className="grid grid-cols-1 items-center lg:grid-cols-2 lg:gap-12 gap-y-8">
         {/* Teks kiri */}
-        <div className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10">
-          <h1 className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
+        <div className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-8 md:pb-10 lg:pt-10">
+          <h1 className="text-2xl sm:text-3xl font-bold leading-9 sm:leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
             Halo, <br />
             Saya{' '}
             <span className="text-pink-500">{personalData.name}</span>
@@ -61,7 +61,7 @@ function HeroSection() {
           </div>
 
           {/* Tombol aksi */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <Link href="#contact" className="bg-gradient-to-r to-pink-500 from-violet-600 p-[1px] rounded-full transition-all duration-300 hover:from-pink-500 hover:to-violet-600">
               <button id="btn-contact-me" className="px-3 text-xs md:px-8 py-3 md:py-4 bg-[#0d1224] rounded-full border-none text-center md:text-sm font-medium uppercase tracking-wider text-[#ffff] no-underline transition-all duration-200 ease-out md:font-semibold flex items-center gap-1 hover:gap-3">
                 <span>Hubungi Saya</span>
@@ -97,11 +97,11 @@ function HeroSection() {
                 priority
               />
               {/* Overlay badge */}
-              <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md rounded-xl px-4 py-3 flex items-center gap-3">
-                <span className="text-2xl">🩺</span>
+              <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-4 sm:left-4 sm:right-4 bg-black/60 backdrop-blur-md rounded-xl px-3 py-2 sm:px-4 sm:py-3 flex items-center gap-2.5 sm:gap-3">
+                <span className="text-xl sm:text-2xl">🩺</span>
                 <div>
-                  <p className="text-white text-sm font-semibold">Ahli Madya Kebidanan</p>
-                  <p className="text-pink-300 text-xs">Politeknik Cendrawasih Palu · 2025</p>
+                  <p className="text-white text-xs sm:text-sm font-semibold">Ahli Madya Kebidanan</p>
+                  <p className="text-pink-300 text-[11px] sm:text-xs">Politeknik Cendrawasih Palu · 2025</p>
                 </div>
               </div>
             </div>

@@ -28,7 +28,7 @@ function AboutSection() {
             width={280}
             height={280}
             alt="Ria Dei Mita"
-            className="rounded-lg transition-all duration-1000 hover:scale-110 cursor-pointer"
+            className="rounded-lg transition-all duration-1000 hover:scale-110 cursor-pointer max-w-[220px] sm:max-w-[280px]"
             style={{ width: 'auto', height: 'auto' }}
           />
         </div>

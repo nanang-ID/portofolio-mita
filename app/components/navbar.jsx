@@ -1,10 +1,24 @@
+"use client";
 // @flow strict
 import Link from "next/link";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+
+const navItems = [
+  { label: "TENTANG", href: "/#about" },
+  { label: "PENGALAMAN", href: "/#experience" },
+  { label: "KOMPETENSI", href: "/#skills" },
+  { label: "PENDIDIKAN", href: "/#education" },
+  { label: "KARYA", href: "/#projects" },
+  { label: "KONTAK", href: "/#contact" },
+];
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className="bg-transparent">
-      <div className="flex items-center justify-between py-5">
+    <nav className="bg-transparent relative z-[99]">
+      <div className="flex flex-wrap items-center justify-between py-5">
         <div className="flex flex-shrink-0 items-center">
           <Link
             href="/"
@@ -14,37 +28,35 @@ function Navbar() {
           </Link>
         </div>
 
-        <ul className="mt-4 flex h-screen max-h-0 w-full flex-col items-start text-sm opacity-0 md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:opacity-100" id="navbar-default">
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#about">
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">TENTANG</div>
-            </Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#experience">
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">PENGALAMAN</div>
-            </Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#skills">
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">KOMPETENSI</div>
-            </Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#education">
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">PENDIDIKAN</div>
-            </Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#projects">
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">KARYA</div>
-            </Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#contact">
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">KONTAK</div>
-            </Link>
-          </li>
+        <button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-label={isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+          aria-expanded={isOpen}
+          className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-white border border-[#25213b] bg-[#101123] hover:text-[#16f2b3] transition-colors"
+        >
+          {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+        </button>
+
+        <ul
+          className={`${
+            isOpen ? "flex" : "hidden"
+          } md:flex mt-3 w-full flex-col items-start gap-1 rounded-xl border border-[#25213b] bg-[#101123]/95 p-3 backdrop-blur-md md:mt-0 md:w-auto md:flex-row md:items-center md:gap-0 md:space-x-1 md:border-0 md:bg-transparent md:p-0`}
+          id="navbar-default"
+        >
+          {navItems.map((item) => (
+            <li key={item.href} className="w-full md:w-auto">
+              <Link
+                className="block px-4 py-2 no-underline outline-none hover:no-underline"
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+              >
+                <div className="text-sm text-white transition-colors duration-300 hover:text-pink-500">
+                  {item.label}
+                </div>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
