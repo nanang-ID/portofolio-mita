@@ -1,5 +1,6 @@
 // @flow strict
 
+import { assetPath } from "@/utils/asset-path";
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +12,7 @@ function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
-        src="/hero.svg"
+        src={assetPath("/hero.svg")}
         alt="Hero"
         width={1572}
         height={795}
@@ -88,7 +89,7 @@ function HeroSection() {
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-500 via-violet-600 to-pink-500 p-[2px] animate-pulse rounded-3xl" />
             <div className="relative rounded-3xl overflow-hidden border-2 border-pink-500/30 shadow-2xl shadow-pink-500/20">
               <Image
-                src="/midwifery-hero.jpg"
+                src={assetPath("/midwifery-hero.jpg")}
                 alt="Ilustrasi Kebidanan - Ria Dei Mita"
                 width={480}
                 height={360}
